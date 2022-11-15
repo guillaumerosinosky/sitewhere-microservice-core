@@ -28,7 +28,7 @@ import com.sitewhere.microservice.lifecycle.TenantEngineLifecycleComponent;
 import com.sitewhere.spi.SiteWhereException;
 import com.sitewhere.spi.microservice.kafka.IKafkaStreamPipeline;
 import com.sitewhere.spi.microservice.lifecycle.ILifecycleProgressMonitor;
-
+import org.apache.kafka.clients.producer.ProducerConfig;
 /**
  * Builds a pipeline for interacting with data consumed from and produced into
  * Kafka topics.
@@ -84,6 +84,8 @@ public abstract class KafkaStreamPipeline extends TenantEngineLifecycleComponent
 	props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, getDefaultValueSerdeClass());
 	props.put(StreamsConfig.DEFAULT_DESERIALIZATION_EXCEPTION_HANDLER_CLASS_CONFIG,
 		LogAndContinueExceptionHandler.class);
+    props.put(StreamsConfig.POLL_MS_CONFIG, 10);
+    props.put(StreamsConfig.producerPrefix(ProducerConfig.LINGER_MS_CONFIG), 10);
 
 	final StreamsBuilder builder = new StreamsBuilder();
 	buildStreams(builder);

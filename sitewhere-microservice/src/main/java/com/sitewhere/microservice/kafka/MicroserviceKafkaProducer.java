@@ -156,7 +156,7 @@ public abstract class MicroserviceKafkaProducer<K, P> extends TenantEngineLifecy
 	config.put(ProducerConfig.ACKS_CONFIG, getAckPolicy().getConfig());
 	config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, getKeySerializer().getName());
 	config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, getValueSerializer().getName());
-    config.put(ProducerConfig.LINGER_MS_CONFIG, 10);
+    config.put(ProducerConfig.LINGER_MS_CONFIG, 0);
 	return config;
     }
 

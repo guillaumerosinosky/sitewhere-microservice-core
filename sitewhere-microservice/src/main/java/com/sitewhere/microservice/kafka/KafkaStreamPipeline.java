@@ -84,8 +84,8 @@ public abstract class KafkaStreamPipeline extends TenantEngineLifecycleComponent
 	props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, getDefaultValueSerdeClass());
 	props.put(StreamsConfig.DEFAULT_DESERIALIZATION_EXCEPTION_HANDLER_CLASS_CONFIG,
 		LogAndContinueExceptionHandler.class);
-    props.put(StreamsConfig.POLL_MS_CONFIG, 10);
-    props.put(StreamsConfig.producerPrefix(ProducerConfig.LINGER_MS_CONFIG), 10);
+    props.put(StreamsConfig.POLL_MS_CONFIG, 0);
+    props.put(StreamsConfig.producerPrefix(ProducerConfig.LINGER_MS_CONFIG), 0);
 
 	final StreamsBuilder builder = new StreamsBuilder();
 	buildStreams(builder);

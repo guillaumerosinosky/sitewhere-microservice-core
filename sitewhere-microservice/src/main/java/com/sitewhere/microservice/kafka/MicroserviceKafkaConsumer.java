@@ -97,7 +97,7 @@ public abstract class MicroserviceKafkaConsumer extends TenantEngineLifecycleCom
 	config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ByteArrayDeserializer.class.getName());
 	config.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
 	config.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
-	config.put(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, 10);
+	config.put(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, 1000);
 	return config;
     }
 
